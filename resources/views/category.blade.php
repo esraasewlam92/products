@@ -11,23 +11,8 @@
         $heads = [
             'ID',
             'Name',
+            'Parent',
             ['label' => 'Actions', 'no-export' => true, 'width' => 5],
-        ];
-
-        $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                        <i class="fa fa-lg fa-fw fa-pen"></i>
-                    </button>';
-        $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                          <i class="fa fa-lg fa-fw fa-trash"></i>
-                      </button>';
-        $config = [
-            'data' => [
-                [22, 'John Bender',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-                [19, 'Sophia Clemens',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-                [3, 'Peter Sousa',  '<nobr>'.$btnEdit.$btnDelete.'</nobr>'],
-            ],
-            'order' => [[1, 'asc']],
-            'columns' => [null, null, ['orderable' => false]],
         ];
     @endphp
 
@@ -37,7 +22,17 @@
             <tr>
                 <td>{{$row->id}}</td>
                 <td>{{$row->name}}</td>
-                <td>{{$row->name}}</td>
+                <td>{{$row->parent->name?? '--'}}</td>
+                <td>
+
+                    <a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Details" href="{{route('category.edit', [$row->id])}}"><i class="fa fa-lg fa-fw fa-pen"></i></a>
+
+
+                    <a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Details" href="{{route('category.delete', [$row->id])}}">
+                        <i class="fa fa-lg fa-fw fa-trash"></i></a>
+
+
+                </td>
             </tr>
         @endforeach
     </x-adminlte-datatable>

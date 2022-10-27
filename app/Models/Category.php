@@ -23,6 +23,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'parent_id',
+        'active',
     ];
 
     public static function boot()
@@ -30,4 +31,10 @@ class Category extends Model
         parent::boot();
 
     }
+
+    public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
 }

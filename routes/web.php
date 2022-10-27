@@ -31,7 +31,8 @@ Route::middleware('auth')->group(function () {
         Route::get('create', [CategoryController::class, 'create'])->name('category.create');
         Route::get('{id}', [CategoryController::class, 'show'])->name('category.show');
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
-        Route::get('{id}/edit', [CategoryController::class, 'edit'])->name('leave.edit');
+        Route::get('{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::delete('delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
         Route::post('/', [CategoryController::class, 'store'])->name('category.store');
         Route::put('{id}', [CategoryController::class, 'update'])->name('category.update');
 
@@ -43,6 +44,8 @@ Route::middleware('auth')->group(function () {
         Route::get('{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('/', [ProductController::class, 'store'])->name('product.store');
         Route::put('{id}', [ProductController::class, 'update'])->name('product.update');
+        Route::delete('delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
 
     });
 });

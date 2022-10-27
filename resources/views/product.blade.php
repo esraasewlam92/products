@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Products')
+@section('title', 'Dashboard')
 
 @section('content_header')
     <h1>Category</h1>
@@ -11,17 +11,9 @@
         $heads = [
             'ID',
             'Name',
+            'Category',
+            'tags',
             ['label' => 'Actions', 'no-export' => true, 'width' => 5],
-        ];
-        $btnEdit = '<button class="btn btn-xs btn-default text-primary mx-1 shadow" title="Edit">
-                        <i class="fa fa-lg fa-fw fa-pen"></i>
-                    </button>';
-        $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow" title="Delete">
-                          <i class="fa fa-lg fa-fw fa-trash"></i>
-                      </button>';
-        $config = [
-            'order' => [[1, 'asc']],
-            'columns' => [null, null, ['orderable' => false]],
         ];
     @endphp
 
@@ -31,7 +23,14 @@
             <tr>
                 <td>{{$row->id}}</td>
                 <td>{{$row->name}}</td>
-                <td>{{$row->name}}</td>
+                <td>{{$row->category->name?? '--'}}</td>
+                <td>{{$row->tags}}</td>
+                <td>
+                    <a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Details" href="{{route('product.edit', [$row->id])}}"><i class="fa fa-lg fa-fw fa-pen"></i></a>
+
+                    <a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Details" href="{{route('product.delete', [$row->id])}}">
+                        <i class="fa fa-lg fa-fw fa-trash"></i></a>
+                </td>
             </tr>
         @endforeach
     </x-adminlte-datatable>

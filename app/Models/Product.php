@@ -33,4 +33,14 @@ class Product extends Model
         parent::boot();
 
     }
+
+    public function getTagsAttribute($tags)
+    {
+        return json_decode($tags);
+    }
+
+    public function setTagsAttribute($tags)
+    {
+        $this->attributes['tags'] = json_encode($tags);
+    }
 }

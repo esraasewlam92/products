@@ -273,17 +273,39 @@ return [
             'url'         => '/',
             'icon'        => 'far fa-fw fa-chart-bar',
         ],
+
         [
-            'text'        => 'Categories',
-            'url'         => 'category',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
+            'text'    => 'Category',
+            'icon'    => 'far fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Create Category',
+                    'url'  => 'category/create',
+
+                ],
+                [
+                    'text' => 'View all Categories',
+                    'url'  => 'category',
+
+                ],
+            ],
         ],
+
         [
-            'text'        => 'Products',
-            'url'         => 'product',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
+            'text'    => 'Product',
+            'icon'    => 'far fa-fw fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Create Product',
+                    'url'  => 'product/create',
+
+                ],
+                [
+                    'text' => 'View all Products',
+                    'url'  => 'product',
+
+                ],
+            ],
         ],
     ],
 
